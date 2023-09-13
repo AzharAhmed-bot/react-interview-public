@@ -1,12 +1,12 @@
-import { Link } from "react-scroll"
 import { memo, useState } from "react"
+import { NavLink } from "react-router-dom"
 import {FaTimes, FaBars} from "react-icons/fa"
 export default function NavBar(){
 const [menu,setMenu]=useState(false)
 const Links=[
-    {name:"Payment", link:"/"},
-    {name:"Salesperson", link:"/"},
-    {name:"Business", link:"/" },
+    {name:"Payment", link:"/payment"},
+    {name:"Salesperson", link:"/salesperson"},
+    {name:"Business", link:"/business" },
     {name:"Signout" , link:"/"}
 ]
 function handleMenu(){
@@ -28,15 +28,12 @@ function handleMenu(){
                             return(
                             
                             <li key={link.name} className="md:ml-8 py-3 text-xl md:my-0">
-                                <Link 
-                                activeClass="active" 
+                                <NavLink  
                                 className="text-xl hover:text-white hover:italic"
-                                to="/" spy={true} 
-                                smooth={true} 
-                                offset={50} 
-                                duration={500}>
+                                to={link.link}
+                                >
                                 {link.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         )
                         })}
